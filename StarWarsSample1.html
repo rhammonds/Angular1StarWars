@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer">
+
+  <head>
+    <link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" />
+    <link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <script data-require="angular.js@*" data-semver="1.6.1" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./lib/script.js"></script>
+    <script src="./lib/controllers.js"></script>
+    <script src="./lib/StarWarsController.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    <div >
+      {{32*23}}
+    </div>
+    
+    
+    <div ng-controller="MainController">
+      <h1>Sample Controller</h1>
+      <div>{{message}}</div>
+    </div>
+    
+    
+    <div ng-controller="PersonController">
+      <h1>Controller Module</h1>
+      <div>{{message}}</div>
+      <div>{{person.firstName}}</div>
+      <div>{{person.lastName}}</div>
+    </div>   
+    
+    <div ng-controller="StarWarsController">
+      <h1>Star Wars</h1>
+      {{personname}}
+      <form>
+        <select>
+          
+        </select>
+        <input type="search" placeholder="Username to find" ng-model="personname" ng-change="search()"/>
+        <input type = "submit" value="Search" ng-click="search()"/>
+      </form>
+      <div><b>{{message}}</b></div>
+      <div> 
+        {{error}}
+        <ul>
+        <li ng-repeat="user in users | orderBy:'name'" ng-click="getPerson(user.url)">
+          {{user.name}}
+        </li>          
+        </ul>
+      </div>
+      <div> 
+        <table>
+          <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Height</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in users | orderBy:'name'" ng-click="getPerson(user.url)">
+              <td>{{user.url.substr(-2).replace('/','')}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.height*200 | currency}}</td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>  
+      <div>{{person.name}}</div>
+      <div>{{person.hair_color}}</div>
+      <div>{{person.height}}</div>
+      <div>{{person.mass}}</div>
+    </div>  
+  
+  </body>
+ 
+</html>
+ 

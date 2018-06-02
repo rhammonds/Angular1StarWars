@@ -1,0 +1,43 @@
+<div ng-show="selectedPerson">
+    <div style="padding:0px;margin:0px;" >
+      <label ng-show="{{error}}" class="alert alert-danger" style="padding:0;margin:0;">{{error}}</label>                             
+    </div> 
+
+    <br/> 
+    
+    <div><h3><b>{{selectedPerson.name}}</b></h3></div>
+    <div>Hair color:&nbsp{{person.hair_color}}</div>
+    <div>Height:&nbsp{{person.height}}</div>
+    <div>Mass:&nbsp{{person.mass}}</div>
+    <div>Skin Color:&nbsp{{person.skin_color}}</div>
+    <div>Eye Color:&nbsp{{person.eye_color}}</div>
+    <div>Birth Year:&nbsp{{person.birth_year}}</div>
+    <div>Gender:&nbsp{{person.gender}}</div>
+    <br/>
+    <div><h3><b>Home World</b></h3></div>
+    <div>Name:&nbsp{{world.name}}</div>
+    <div>Population:&nbsp{{world.population | number   }}</div>  
+    <br/>     
+    <div><h3><b>Films</b></h3></div>
+    <div  >          
+      <table  >
+      <thead>
+        <tr>
+          <td >#</td>
+          <td >Film Name</td>  
+          <td>Episode</td>
+          <td>Date</td>                
+        </tr>
+      </thead>
+        <tbody> 
+          <tr ng-repeat = "film in filmList | orderBy:'title'">
+            <td>{{$index+1}}</td>
+            <td>{{film.title}}</td>  
+            <td>{{film.episode}}</td>
+            <td>{{film.release_date |  date : 'yyyy-MM-dd'}}</td>                 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+<div ng-show="selectedFilm">
+    <div style="padding:0px;margin:0px;" >
+        <label ng-show="{{error}}" class="alert alert-danger" style="padding:0;margin:0;">{{error}}</label>                             
+    </div> 
+
+    <br/> 
+    
+    <div><h3><b>Film</b></h3></div>
+    <div>Title:&nbsp<b>{{selectedFilm.title}}</b></div>
+    <div>Episode:&nbsp<b>{{selectedFilm.episode_id}}</b></div>
+    <div>Director:&nbsp<b>{{selectedFilm.director}}</b></div>
+    <div>Producer:&nbsp<b>{{selectedFilm.producer}}</b></div>
+    <div>Release Date:&nbsp<b>{{selectedFilm.release_date}}</b></div>
+    <div>
+        Opening:&nbsp
+        <div style=' width:1000px; font-size: smaller'>{{selectedFilm.opening_crawl}}</div>
+    </div>
+
+    <div><h3><b>Characters</b></h3></div>
+    <div  >          
+        <table  >
+        <thead>
+        <tr>
+            <td >#</td>
+            <td >Name</td>  
+        </tr>
+        </thead>
+        <tbody> 
+            <tr ng-repeat = "c in characterList | orderBy:'name'">
+                <td>{{$index+1}}</td>
+                <td>{{c.name}}</td>  
+            </tr>
+        </tbody>
+        </table>
+
+    </div>         
+    
+    
+</div> 

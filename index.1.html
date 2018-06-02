@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="starWarsApp">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="  sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="style.css" />
+    
+    <script src="./lib/app.js"></script>
+    <script src="./lib/controllers.js"></script>
+    <script src="./lib/StarWarsController.js"></script>
+    <script src="./lib/starwars.js"></script>
+  </head>
+
+  <body>
+		<div id="intro">      
+      <div ng-controller="StarWarsController">
+          <div id="Title"><h1><b>Star Wars</b></h1></div>
+          <nav class="{{active}}" ng-click="$event.preventDefault()">
+
+              <!-- When a link in the menu is clicked, we set the active variable -->
+        
+              <a href="#" class="home" ng-click="active='home'">People</a>          
+              <a href="#" class="about" ng-click="active='about'">Films</a>
+              <a href="#" class="contact" ng-click="active='contact'">Planets</a>
+            </nav>
+
+        
+        <div>{{countDown}}</div>
+        Select a character:&nbsp
+        <select id="Character"  width="300"
+          ng-model="selectedPerson"
+          ng-options="user as user.name for user in users | orderBy:'name'"
+          ng-change="getPerson()">
+          <option>&nbsp</option>
+        </select>
+        <div ng-show="selectedPerson">
+          <div style="padding:0px;margin:0px;" >
+            <label ng-show="{{error}}" class="alert alert-danger" style="padding:0;margin:0;">{{error}}</label>
+          <div> 
+            <br/>
+            <div ng-include="'characterDetails.html'" ></div>
+          </div> 
+        </div>
+        </div>
+        
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+
+  
+  </body>
+ 
+</html>
+ 
